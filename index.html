@@ -3,52 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aishwaryaka's Private Diary ✨</title>
+    <title>Aishwaryaka's Secret Vault ✨</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="stars-container"></div>
+
     <div id="lock-screen" class="overlay">
-        <div class="lock-card">
-            <div class="lock-icon">🔒</div>
+        <div class="glass-card">
+            <div class="profile-area">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ashi&eyelashProbability=100&glasses=prescription02&hairColor=2c1b18&clothing=white" class="avatar-img">
+            </div>
             <h2 id="lock-title">Aishwaryaka's Vault</h2>
             <p id="lock-instruction">Create your secret key:</p>
-            <input type="password" id="passInput" placeholder="Enter password...">
-            <button type="button" id="lock-button" onclick="handlePassword()">Open Diary</button>
+            <input type="password" id="passInput" placeholder="Password...">
+            <button type="button" onclick="handlePassword()" class="glass-btn">Unlock Stage</button>
         </div>
     </div>
 
-    <div id="main-content" class="diary-container" style="display:none;">
-        <div class="header">
-            <div class="birthday-tag">Born Dec 10 🌟</div>
-            <h1>Aishwaryaka's Diary</h1>
+    <div id="main-content" class="diary-app" style="display:none;">
+        <div class="header-section">
+            <span class="bday-badge">Born Dec 10 🎂</span>
+            <h1>Personal Diary</h1>
         </div>
 
-        <div class="diary-paper">
-            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Aishwaryaka&hairColor=634e34" class="anime-character" alt="Aishwaryaka anime">
-            
-            <div class="ribbon">Personal Notes</div>
-            
-            <textarea id="diaryInput" placeholder="Write your secrets or thoughts here..."></textarea>
-            
-            <button onclick="saveEntry()" class="save-btn">Save to Memory ✨</button>
+        <div class="notebook">
+            <div class="notebook-header">
+                <span class="ribbon">Daily Thoughts</span>
+            </div>
+            <div class="lined-paper">
+                <textarea id="diaryInput" placeholder="How was your day, Aishwaryaka?"></textarea>
+            </div>
+            <button onclick="saveEntry()" class="save-btn">Keep in My Heart ❤️</button>
         </div>
 
-        <div class="icon-bar">
-            <div class="mini-box">🌸</div>
-            <div class="mini-box">⭐</div>
-            <div class="mini-box">🌙</div>
+        <div id="birthday-modal" class="modal-overlay" style="display:none;">
+            <div class="modal-card">
+                <span class="cake">🎂</span>
+                <h2>Happy Birthday!</h2>
+                <p>A special place for your special thoughts. Enjoy your diary, Aishwaryaka!</p>
+                <button onclick="closeModal()">Enter My Vault</button>
+            </div>
         </div>
 
         <div id="savedEntries"></div>
     </div>
-<div id="birthday-modal" class="modal-overlay" style="display:none;">
-    <div class="modal-card">
-        <div class="cake-icon">🎂</div>
-        <h2>Happy Birthday, Aishwaryaka!</h2>
-        <p>I made this private space just for you to keep your thoughts and secrets safe. ✨</p>
-        <button onclick="closeModal()">Thank You! ❤️</button>
-    </div>
-</div>
+
     <script src="script.js"></script>
 </body>
 </html>
