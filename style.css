@@ -1,144 +1,106 @@
-body {
-    background: #1a1a2e; /* Deep aesthetic blue */
-    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    body {
+    background: linear-gradient(135deg, #fce7f3 0%, #e0f2fe 50%, #fef3c7 100%);
     margin: 0;
+    font-family: 'Segoe UI', cursive, sans-serif;
     display: flex;
     justify-content: center;
     min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.avatar-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid white;
+    background: white;
+    margin-bottom: 15px;
 }
 
 .overlay {
     position: fixed;
     inset: 0;
-    background: #1a1a2e;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
 }
 
-.lock-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.diary-container {
+.diary-app {
     width: 90%;
     max-width: 400px;
-    margin-top: 30px;
-    text-align: center;
+    padding-top: 40px;
 }
 
-.birthday-tag {
-    background: #ffd700;
-    color: #000;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.diary-paper {
-    background: #24243e;
-    border-radius: 25px;
+.notebook {
+    background: white;
+    border-radius: 20px;
     padding: 20px;
-    position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    border-bottom: 5px solid #f472b6;
 }
 
-.anime-character {
-    position: absolute;
-    top: -50px;
-    left: -20px;
-    width: 100px;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-}
-
-.ribbon {
-    background: #6a11cb;
-    color: white;
-    padding: 5px 20px;
-    border-radius: 10px;
-    display: inline-block;
-    margin-bottom: 15px;
-    font-size: 14px;
+.lined-paper {
+    background-image: linear-gradient(#e2e8f0 1px, transparent 1px);
+    background-size: 100% 30px;
+    line-height: 30px;
+    padding: 10px 0;
 }
 
 textarea {
     width: 100%;
-    height: 150px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    color: white;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 16px;
-    resize: none;
-}
-
-.save-btn {
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    height: 200px;
     border: none;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+    color: #475569;
+}
+
+.save-btn, .glass-btn {
+    width: 100%;
+    background: #f472b6;
     color: white;
-    padding: 12px 25px;
-    border-radius: 25px;
-    margin-top: 15px;
-    cursor: pointer;
+    border: none;
+    padding: 12px;
+    border-radius: 15px;
     font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
 }
 
-.icon-bar {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.mini-box {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-/* Star Animation Styles */
+/* Magic Stars */
 .star-particle {
     position: absolute;
-    color: #ffd700;
+    color: #fbbf24;
     font-size: 20px;
     pointer-events: none;
-    user-select: none;
-    animation: fadeUp 1.5s ease-out forwards;
-    z-index: 9999;
+    animation: floatUp 1s ease-out forwards;
 }
 
-@keyframes fadeUp {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-50px) scale(0.5);
-        opacity: 0;
-    }
+@keyframes floatUp {
+    to { transform: translateY(-60px) rotate(20deg); opacity: 0; }
 }
+
+/* Modal */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,21 +109,8 @@ textarea {
 
 .modal-card {
     background: white;
-    color: #1a1a2e;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 25px;
     text-align: center;
-    max-width: 300px;
-    box-shadow: 0 0 30px #ffd700;
-}
-
-.cake-icon { font-size: 50px; margin-bottom: 10px; }
-
-.modal-card button {
-    background: #6a11cb;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin-top: 15px;
+    max-width: 280px;
 }
