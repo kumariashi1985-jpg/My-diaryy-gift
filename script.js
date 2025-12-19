@@ -1,44 +1,46 @@
-const BIRTHDAY_PASSWORD = "1012"; // This is the default key (Dec 10)
-// You can tell her to change this or use a custom one!
+// Check if a password already exists on her device
+const savedPassword = localStorage.getItem('userSecretPass');
+const title = document.getElementById('lock-title');
+const instruction = document.getElementById('lock-instruction');
+const button = document.getElementById('lock-button');
 
-function checkPassword() {
-    const input = document.getElementById('passInput').value;
-    // For ultimate privacy, she can set her own password here.
-    if(input === BIRTHDAY_PASSWORD) {
-        document.getElementById('lock-screen').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-        displayEntries();
-    } else {
-        alert("Wrong key, Superstar! 🎤");
-    }
+// If no password exists, it's the first time she's opening it
+if (!savedPassword) {
+    title.innerText = "Welcome, Superstar! ✨";
+    instruction.innerText = "Create your secret password for this diary:";
+    button.innerText = "Set My Password";
 }
 
-// Create 10 Floating stars (for Dec 10) and Music Notes
-function createDecorations() {
-    const container = document.getElementById('stars-background');
-    const icons = ['⭐', '🎵', '🎶', '✨', '🎤'];
+function handlePassword() {
+    const input = document.getElementById('passInput').value;
     
-    for (let i = 0; i < 25; i++) {
-        let el = document.createElement('div');
-        el.className = 'musical-note';
-        el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-        el.style.left = Math.random() * 100 + 'vw';
-        el.style.animationDelay = Math.random() * 8 + 's';
-        el.style.fontSize = (Math.random() * 20 + 10) + 'px';
-        container.appendChild(el);
+    if (!input) {
+        alert("Please enter a password! 🎶");
+        return;
+    }
+
+    if (!savedPassword) {
+        // FIRST TIME SETUP
+        localStorage.setItem('userSecretPass', input);
+        alert("Password set! Only you can access this diary now. 🔒");
+        location.reload(); // Refresh to lock it with the new pass
+    } else {
+        // LOGIN ATTEMPT
+        if (input === savedPassword) {
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            displayEntries();
+        } else {
+            alert("Wrong key, Diva! 🎤");
+        }
     }
 }
 
 function saveEntry() {
     const text = document.getElementById('diaryInput').value;
     if(!text) return;
-    
     const entries = JSON.parse(localStorage.getItem('singerDiary') || '[]');
-    entries.unshift({
-        date: new Date().toLocaleString(),
-        content: text
-    });
-    
+    entries.unshift({ date: new Date().toLocaleDateString(), content: text });
     localStorage.setItem('singerDiary', JSON.stringify(entries));
     document.getElementById('diaryInput').value = '';
     displayEntries();
@@ -47,12 +49,10 @@ function saveEntry() {
 function displayEntries() {
     const entries = JSON.parse(localStorage.getItem('singerDiary') || '[]');
     const html = entries.map(e => `
-        <div style="border-left: 4px solid #gold; padding: 10px; margin: 15px 0; background: rgba(255,255,255,0.1); border-radius: 8px;">
-            <small style="color: #bbb;">${e.date}</small>
-            <p style="margin: 5px 0;">${e.content}</p>
+        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin-top: 15px; border-left: 3px solid #ffd700; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);">
+            <small style="color: #ffd700; font-weight: bold;">${e.date}</small>
+            <p style="margin: 8px 0; color: #fff; line-height: 1.4;">${e.content}</p>
         </div>
     `).join('');
     document.getElementById('savedEntries').innerHTML = html;
 }
-
-createDecorations();
