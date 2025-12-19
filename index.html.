@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Diva's Secret Journal 🎤</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="stars-background"></div>
+
+    <div id="lock-screen" class="overlay">
+        <div class="glass-card">
+            <div class="cartoon">🎤✨</div>
+            <h2>Artist's Private Booth</h2>
+            <p>Enter your secret melody (password):</p>
+            <input type="password" id="passInput" placeholder="Secret Key...">
+            <button onclick="checkPassword()">Unlock Stage</button>
+        </div>
+    </div>
+
+    <div id="main-content" class="diary-container" style="display:none;">
+        <header>
+            <div class="birthday-badge">Born Dec 10 ♐</div>
+            <h1>The Songwriter's Vault</h1>
+            <p id="greeting"></p>
+        </header>
+
+        <div class="input-area">
+            <textarea id="diaryInput" placeholder="Write lyrics or thoughts here..."></textarea>
+            <button onclick="saveEntry()" class="save-btn">Record Entry 🎶</button>
+        </div>
+
+        <div id="savedEntries"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
