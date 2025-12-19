@@ -3,45 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Songwriter's Vault 🎤</title>
+    <title>Aishwaryaka's Private Diary ✨</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="stars-background"></div>
-
     <div id="lock-screen" class="overlay">
-        <div class="glass-card">
-            <div class="main-sticker">⭐🎤⭐</div>
-            <h2 id="lock-title">Private Vault</h2>
-            <p id="lock-instruction">Enter your secret key:</p>
-            <input type="password" id="passInput" placeholder="Password...">
-            <button type="button" id="lock-button" onclick="handlePassword()">Enter Stage</button>
+        <div class="lock-card">
+            <div class="lock-icon">🔒</div>
+            <h2 id="lock-title">Aishwaryaka's Vault</h2>
+            <p id="lock-instruction">Create your secret key:</p>
+            <input type="password" id="passInput" placeholder="Enter password...">
+            <button type="button" id="lock-button" onclick="handlePassword()">Open Diary</button>
         </div>
     </div>
 
     <div id="main-content" class="diary-container" style="display:none;">
-        <div class="birthday-tag">Born Dec 10 🌟</div>
-        
-        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Ashi" class="side-sticker singer-girl">
-        <img src="https://img.icons8.com/bubbles/100/microphone.png" class="side-sticker mic-icon">
-        <img src="https://img.icons8.com/bubbles/100/cat.png" class="side-sticker cat-icon">
-
-        <h1>The Songwriter's Vault</h1>
-        
-        <div class="input-box">
-            <textarea id="diaryInput" placeholder="Write lyrics or thoughts here..."></textarea>
-            <button onclick="saveEntry()" class="record-btn">Record Entry 🎶</button>
+        <div class="header">
+            <div class="birthday-tag">Born Dec 10 🌟</div>
+            <h1>Aishwaryaka's Diary</h1>
         </div>
 
-        <div class="photo-strip">
-            <div class="mini-frame"><img src="https://img.icons8.com/bubbles/100/headphone.png"></div>
-            <div class="mini-frame"><img src="https://img.icons8.com/bubbles/100/cloud.png"></div>
-            <div class="mini-frame"><img src="https://img.icons8.com/bubbles/100/musical-notes.png"></div>
+        <div class="diary-paper">
+            <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Aishwaryaka&hairColor=634e34" class="anime-character" alt="Aishwaryaka anime">
+            
+            <div class="ribbon">Personal Notes</div>
+            
+            <textarea id="diaryInput" placeholder="Write your secrets or thoughts here..."></textarea>
+            
+            <button onclick="saveEntry()" class="save-btn">Save to Memory ✨</button>
+        </div>
+
+        <div class="icon-bar">
+            <div class="mini-box">🌸</div>
+            <div class="mini-box">⭐</div>
+            <div class="mini-box">🌙</div>
         </div>
 
         <div id="savedEntries"></div>
     </div>
-
+<div id="birthday-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+        <div class="cake-icon">🎂</div>
+        <h2>Happy Birthday, Aishwaryaka!</h2>
+        <p>I made this private space just for you to keep your thoughts and secrets safe. ✨</p>
+        <button onclick="closeModal()">Thank You! ❤️</button>
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
