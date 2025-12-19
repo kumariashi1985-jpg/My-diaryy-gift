@@ -1,9 +1,47 @@
-<div id="lock-screen" class="overlay">
-    <div class="glass-card">
-        <div class="main-sticker">⭐🎤⭐</div>
-        <h2 id="lock-title">Private Vault</h2>
-        <p id="lock-instruction">Enter your secret key:</p>
-        <input type="password" id="passInput" placeholder="Password...">
-        <button id="lock-button" onclick="handlePassword()">Enter Stage</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songwriter's Vault 🎤</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="stars-background"></div>
+
+    <div id="lock-screen" class="overlay">
+        <div class="glass-card">
+            <div class="main-sticker">⭐🎤⭐</div>
+            <h2 id="lock-title">Private Vault</h2>
+            <p id="lock-instruction">Enter your secret key:</p>
+            <input type="password" id="passInput" placeholder="Password...">
+            <button type="button" id="lock-button" onclick="handlePassword()">Enter Stage</button>
+        </div>
     </div>
-</div>
+
+    <div id="main-content" class="diary-container" style="display:none;">
+        <div class="birthday-tag">Born Dec 10 🌟</div>
+        
+        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Ashi" class="side-sticker singer-girl">
+        <img src="https://img.icons8.com/bubbles/100/microphone.png" class="side-sticker mic-icon">
+        <img src="https://img.icons8.com/bubbles/100/cat.png" class="side-sticker cat-icon">
+
+        <h1>The Songwriter's Vault</h1>
+        
+        <div class="input-box">
+            <textarea id="diaryInput" placeholder="Write lyrics or thoughts here..."></textarea>
+            <button onclick="saveEntry()" class="record-btn">Record Entry 🎶</button>
+        </div>
+
+        <div class="photo-strip">
+            <div class="mini-frame"><img src="https://img.icons8.com/bubbles/100/headphone.png"></div>
+            <div class="mini-frame"><img src="https://img.icons8.com/bubbles/100/cloud.png"></div>
+            <div class="mini-frame"><img src="https://img.icons8.com/bubbles/100/musical-notes.png"></div>
+        </div>
+
+        <div id="savedEntries"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
